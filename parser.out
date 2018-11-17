@@ -1,0 +1,131 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> parrafo
+Rule 1     parrafo -> frases
+Rule 2     frases -> frases oracion
+Rule 3     frases -> oracion
+Rule 4     oracion -> SUJETO VERBOPRESENTE
+Rule 5     oracion -> VERBOPASADO
+Rule 6     oracion -> VERBOFUTURO OBJETO
+
+Terminals, with rules where they appear
+
+OBJETO               : 6
+SUJETO               : 4
+VERBOFUTURO          : 6
+VERBOPASADO          : 5
+VERBOPRESENTE        : 4
+error                : 
+
+Nonterminals, with rules where they appear
+
+frases               : 1 2
+oracion              : 2 3
+parrafo              : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . parrafo
+    (1) parrafo -> . frases
+    (2) frases -> . frases oracion
+    (3) frases -> . oracion
+    (4) oracion -> . SUJETO VERBOPRESENTE
+    (5) oracion -> . VERBOPASADO
+    (6) oracion -> . VERBOFUTURO OBJETO
+
+    SUJETO          shift and go to state 4
+    VERBOPASADO     shift and go to state 5
+    VERBOFUTURO     shift and go to state 6
+
+    parrafo                        shift and go to state 1
+    frases                         shift and go to state 2
+    oracion                        shift and go to state 3
+
+state 1
+
+    (0) S' -> parrafo .
+
+
+
+state 2
+
+    (1) parrafo -> frases .
+    (2) frases -> frases . oracion
+    (4) oracion -> . SUJETO VERBOPRESENTE
+    (5) oracion -> . VERBOPASADO
+    (6) oracion -> . VERBOFUTURO OBJETO
+
+    $end            reduce using rule 1 (parrafo -> frases .)
+    SUJETO          shift and go to state 4
+    VERBOPASADO     shift and go to state 5
+    VERBOFUTURO     shift and go to state 6
+
+    oracion                        shift and go to state 7
+
+state 3
+
+    (3) frases -> oracion .
+
+    SUJETO          reduce using rule 3 (frases -> oracion .)
+    VERBOPASADO     reduce using rule 3 (frases -> oracion .)
+    VERBOFUTURO     reduce using rule 3 (frases -> oracion .)
+    $end            reduce using rule 3 (frases -> oracion .)
+
+
+state 4
+
+    (4) oracion -> SUJETO . VERBOPRESENTE
+
+    VERBOPRESENTE   shift and go to state 8
+
+
+state 5
+
+    (5) oracion -> VERBOPASADO .
+
+    SUJETO          reduce using rule 5 (oracion -> VERBOPASADO .)
+    VERBOPASADO     reduce using rule 5 (oracion -> VERBOPASADO .)
+    VERBOFUTURO     reduce using rule 5 (oracion -> VERBOPASADO .)
+    $end            reduce using rule 5 (oracion -> VERBOPASADO .)
+
+
+state 6
+
+    (6) oracion -> VERBOFUTURO . OBJETO
+
+    OBJETO          shift and go to state 9
+
+
+state 7
+
+    (2) frases -> frases oracion .
+
+    SUJETO          reduce using rule 2 (frases -> frases oracion .)
+    VERBOPASADO     reduce using rule 2 (frases -> frases oracion .)
+    VERBOFUTURO     reduce using rule 2 (frases -> frases oracion .)
+    $end            reduce using rule 2 (frases -> frases oracion .)
+
+
+state 8
+
+    (4) oracion -> SUJETO VERBOPRESENTE .
+
+    SUJETO          reduce using rule 4 (oracion -> SUJETO VERBOPRESENTE .)
+    VERBOPASADO     reduce using rule 4 (oracion -> SUJETO VERBOPRESENTE .)
+    VERBOFUTURO     reduce using rule 4 (oracion -> SUJETO VERBOPRESENTE .)
+    $end            reduce using rule 4 (oracion -> SUJETO VERBOPRESENTE .)
+
+
+state 9
+
+    (6) oracion -> VERBOFUTURO OBJETO .
+
+    SUJETO          reduce using rule 6 (oracion -> VERBOFUTURO OBJETO .)
+    VERBOPASADO     reduce using rule 6 (oracion -> VERBOFUTURO OBJETO .)
+    VERBOFUTURO     reduce using rule 6 (oracion -> VERBOFUTURO OBJETO .)
+    $end            reduce using rule 6 (oracion -> VERBOFUTURO OBJETO .)
+

@@ -49,10 +49,7 @@ def p_oracion_futuro(p):
     'oracion : SUJETO VERBOFUTURO OBJETO'
     pass
 
-def p_verbo(p):
-    '''verbo :    VERBOPRESENTE
-                | VERBOPASADO
-                | VERBOFUTURO'''
+
 """
     def p_empty(p):
     'empty :'

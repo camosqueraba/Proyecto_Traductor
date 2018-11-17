@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'OBJETO SUJETO VERBOFUTURO VERBOPASADO VERBOPRESENTEparrafo : frasesfrases : frases oracionfrases : oracionoracion : SUJETO    VERBOPRESENTE\n                         | VERBOPASADO\n                         | VERBOFUTURO OBJETO \n                         '
+_lr_signature = 'OBJETO SUJETO VERBOFUTURO VERBOPASADO VERBOPRESENTEparrafo : frasesfrases : frases oracionfrases : oracionoracion : SUJETO VERBOPRESENTE OBJETOoracion : SUJETO VERBOPASADO OBJETOoracion : SUJETO VERBOFUTURO OBJETOverbo :    VERBOPRESENTE\n                | VERBOPASADO\n                | VERBOFUTURO'
     
-_lr_action_items = {'SUJETO':([0,2,3,5,7,8,9,],[4,4,-3,-5,-2,-4,-6,]),'VERBOPASADO':([0,2,3,5,7,8,9,],[5,5,-3,-5,-2,-4,-6,]),'VERBOFUTURO':([0,2,3,5,7,8,9,],[6,6,-3,-5,-2,-4,-6,]),'$end':([1,2,3,5,7,8,9,],[0,-1,-3,-5,-2,-4,-6,]),'VERBOPRESENTE':([4,],[8,]),'OBJETO':([6,],[9,]),}
+_lr_action_items = {'SUJETO':([0,2,3,5,9,10,11,],[4,4,-3,-2,-4,-5,-6,]),'$end':([1,2,3,5,9,10,11,],[0,-1,-3,-2,-4,-5,-6,]),'VERBOPRESENTE':([4,],[6,]),'VERBOPASADO':([4,],[7,]),'VERBOFUTURO':([4,],[8,]),'OBJETO':([6,7,8,],[9,10,11,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'parrafo':([0,],[1,]),'frases':([0,],[2,]),'oracion':([0,2,],[3,7,]),}
+_lr_goto_items = {'parrafo':([0,],[1,]),'frases':([0,],[2,]),'oracion':([0,2,],[3,5,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,10 +27,13 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> parrafo","S'",1,None,None,None),
-  ('parrafo -> frases','parrafo',1,'p_parrafo','ParserTraductor.py',14),
-  ('frases -> frases oracion','frases',2,'p_frases_1','ParserTraductor.py',19),
-  ('frases -> oracion','frases',1,'p_frases_2','ParserTraductor.py',25),
-  ('oracion -> SUJETO VERBOPRESENTE','oracion',2,'p_oracion','ParserTraductor.py',29),
-  ('oracion -> VERBOPASADO','oracion',1,'p_oracion','ParserTraductor.py',30),
-  ('oracion -> VERBOFUTURO OBJETO','oracion',2,'p_oracion','ParserTraductor.py',31),
+  ('parrafo -> frases','parrafo',1,'p_parrafo','ParserTraductor.py',15),
+  ('frases -> frases oracion','frases',2,'p_frases_1','ParserTraductor.py',20),
+  ('frases -> oracion','frases',1,'p_frases_2','ParserTraductor.py',26),
+  ('oracion -> SUJETO VERBOPRESENTE OBJETO','oracion',3,'p_oracion_presente','ParserTraductor.py',39),
+  ('oracion -> SUJETO VERBOPASADO OBJETO','oracion',3,'p_oracion_pasado','ParserTraductor.py',45),
+  ('oracion -> SUJETO VERBOFUTURO OBJETO','oracion',3,'p_oracion_futuro','ParserTraductor.py',49),
+  ('verbo -> VERBOPRESENTE','verbo',1,'p_verbo','ParserTraductor.py',53),
+  ('verbo -> VERBOPASADO','verbo',1,'p_verbo','ParserTraductor.py',54),
+  ('verbo -> VERBOFUTURO','verbo',1,'p_verbo','ParserTraductor.py',55),
 ]

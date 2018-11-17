@@ -10,10 +10,15 @@ import ply.lex as lex
 tokens = (
 
     #Pronombres Personales
-    'SUJETO',
+    
+    'SUJETO_PRIMERA_PERSONA',
+    'SUJETO_SEGUNDA_PERSONA',
+    'SUJETO_TERCERA_PERSONA',
+    
+    'VERBO',
     'VERBOPRESENTE',
     'VERBOPASADO',
-    'VERBOFUTURO',
+    'AUXILIAR_FUTURO',
     'OBJETO'
     )
 
@@ -142,12 +147,20 @@ tokens = (
 
 
 
-def t_SUJETO(t):
-    r'Yo|Tu|Ella|El|Nosotros|Ustedes|Ellos'
+def t_SUJETO_PRIMERA_PERSONA(t):
+    r'I|We'
     return t
 
+def t_SUJETO_SEGUNDA_PERSONA(t):
+    r'You'
+    return t    
+
+def t_SUJETO_TERCERA_PERSONA(t):
+    r'He|She|It'
+    return t  
+
 def t_VERBOPASADO(t):
-    r'bailé|canté|jugué|reí|lloré'
+    r'bailé|canté|cantó|jugué|reí|lloré'
     return t
 
 def t_VERBOPRESENTE(t):
@@ -177,7 +190,7 @@ def test(data, lexer):
         tok = lexer.token()
         if not tok:
             break
-        print (tok)
+        print (tok,'1')
 
 lexer = lex.lex()
 
@@ -186,8 +199,9 @@ if __name__ == '__main__':
 
     # Test
     data = '''
-        Yo canto bien
-        Ella canta bien
+        I canto bien
+        She canta bien
+        He cantó bien
     '''
 
     # Build lexer and try on

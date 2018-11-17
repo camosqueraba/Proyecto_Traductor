@@ -9,17 +9,14 @@ Rule 3     frases -> oracion
 Rule 4     oracion -> SUJETO VERBOPRESENTE OBJETO
 Rule 5     oracion -> SUJETO VERBOPASADO OBJETO
 Rule 6     oracion -> SUJETO VERBOFUTURO OBJETO
-Rule 7     verbo -> VERBOPRESENTE
-Rule 8     verbo -> VERBOPASADO
-Rule 9     verbo -> VERBOFUTURO
 
 Terminals, with rules where they appear
 
 OBJETO               : 4 5 6
 SUJETO               : 4 5 6
-VERBOFUTURO          : 6 9
-VERBOPASADO          : 5 8
-VERBOPRESENTE        : 4 7
+VERBOFUTURO          : 6
+VERBOPASADO          : 5
+VERBOPRESENTE        : 4
 error                : 
 
 Nonterminals, with rules where they appear
@@ -27,7 +24,6 @@ Nonterminals, with rules where they appear
 frases               : 1 2
 oracion              : 2 3
 parrafo              : 0
-verbo                : 
 
 Parsing method: LALR
 

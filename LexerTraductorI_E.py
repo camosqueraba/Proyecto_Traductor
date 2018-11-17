@@ -16,10 +16,12 @@ tokens = (
     'SUJETO_TERCERA_PERSONA',
 
     'VERBO',
+    'VERBO_PRESENTE',
     'VERBO_PRESENTE_TERCERA_PERSONA',
     'VERBO_PASADO',
     'AUXILIAR_FUTURO',
     'OBJETO',
+    'OBJETO_PRONOMBRE',
 
     'VERBO_PRESENTE_BE_1',
     'VERBO_PRESENTE_BE_2',
@@ -29,7 +31,7 @@ tokens = (
 
 )
 
-t_INTERROGACION = '\?'
+t_INTERROGACION = r'\?'
 """
     'YO',
     'TU',
@@ -215,8 +217,15 @@ def t_AUXILIAR_FUTURO(t):
 
 
 def t_OBJETO(t):
-    r'salsa|opera|futbol|mucho|solo|bien'
+    r'salsa|opera|soccer|alone|good'
     return t
+
+def t_PRONOMBRE_OBJETO(t):
+    r'me|you|him|her|it|them'
+    return t
+
+
+#def t_INTERROGACION():
 
 
 def t_newline(t):
@@ -248,9 +257,9 @@ if __name__ == '__main__':
 
     # Test
     data = '''
-        I sang bien
-        She is bien
-        He cantó bien
+        I sang good?
+        She is good
+        He sang good
     '''
 
     # Build lexer and try on

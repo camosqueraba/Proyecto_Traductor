@@ -3,8 +3,8 @@
 # Referencia: http://www.juanjoconti.com.ar/2007/11/02/minilisp-un-ejemplo-de-ply/
 
 import ply.yacc as yacc
-from LexerTraductor import tokens
-import LexerTraductor
+from LexerTraductorI_E import tokens
+import LexerTraductorI_E
 import sys
 import codecs
 
@@ -12,18 +12,23 @@ VERBOSE = 1
 
 
 def p_parrafo(p):
-    'parrafo : frases'
+    'parrafo : frase'
     pass
 
 
-def p_frases_1(p):
-    'frases : frases oracion'
+def p_frase(p):
+    'frase : frase oracion'
   
     pass
 
+def p_frase_(p):
+    'frase : oracion'
+    pass
 
-def p_frases_2(p):
-    'frases : oracion'
+def p_oracion(p):
+    '''oracion :     oracion_presente
+                |   oracion_pasado
+                |   oracion_futuro'''
     pass
 
 
@@ -36,27 +41,39 @@ def p_frases_2(p):
 
 
 def p_oracion_presente(p):
-    'oracion : SUJETO VERBOPRESENTE OBJETO'
+    '''oracion_presente :   sujeto VERBO_PRESENTE OBJETO
+                          | SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO'''
     pass
 
 
 
 def p_oracion_pasado(p):
-    'oracion : SUJETO VERBOPASADO OBJETO'
+    'oracion_pasado : sujeto VERBO_PASADO OBJETO'
     pass
 
 def p_oracion_futuro(p):
-    'oracion : SUJETO VERBOFUTURO OBJETO'
+    'oracion_futuro : sujeto AUXILIAR_FUTURO VERBO OBJETO'
     pass
 
-def p_verbo(p):
-    '''verbo :    VERBOPRESENTE
-                | VERBOPASADO
-                | VERBOFUTURO'''
+#def p_verbo(p):
+#    '''verbo :    VERBO_PRESENTE
+#                | VERBO_PASADO
+#                | VERBO   '''
+
+def p_sujeto(p):
+    '''sujeto :     SUJETO_PRIMERA_PERSONA
+                 |  SUJETO_SEGUNDA_PERSONA'''
+    pass
+
+
+def p_sujeto_1(p):
+    'sujeto_tercera_persona : SUJETO_TERCERA_PERSONA'
+    pass
+
 """
     def p_empty(p):
-    'empty :'
-    pass
+        'empty :'
+        pass
 """
 
 def p_error(p):
@@ -66,7 +83,7 @@ def p_error(p):
             print("Syntax error at line " + str(p.lexer.lineno) +
                   " Unexpected token  " + str(p.value))
         else:
-            print("Syntax error at line: " + str(cminus_lexer.lexer.lineno))
+            print("Syntax error at line: " + str(LexerTraductorI_E.lexer.lineno))
     else:
         raise Exception('syntax', 'error')
 

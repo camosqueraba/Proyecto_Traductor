@@ -1,51 +1,88 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
+Unused terminals:
+
+    INTERROGACION
+    OBJETO_PRONOMBRE
+    VERBO_PRESENTE_BE_1
+    VERBO_PRESENTE_BE_2
+    VERBO_PRESENTE_BE_3
+
 Grammar
 
 Rule 0     S' -> parrafo
-Rule 1     parrafo -> frases
-Rule 2     frases -> frases oracion
-Rule 3     frases -> oracion
-Rule 4     oracion -> SUJETO VERBOPRESENTE OBJETO
-Rule 5     oracion -> SUJETO VERBOPASADO OBJETO
-Rule 6     oracion -> SUJETO VERBOFUTURO OBJETO
-Rule 7     verbo -> VERBOPRESENTE
-Rule 8     verbo -> VERBOPASADO
-Rule 9     verbo -> VERBOFUTURO
+Rule 1     parrafo -> frase
+Rule 2     frase -> frase oracion
+Rule 3     frase -> oracion
+Rule 4     oracion -> oracion_presente
+Rule 5     oracion -> oracion_pasado
+Rule 6     oracion -> oracion_futuro
+Rule 7     oracion_presente -> sujeto VERBO_PRESENTE OBJETO
+Rule 8     oracion_presente -> SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO
+Rule 9     oracion_pasado -> sujeto VERBO_PASADO OBJETO
+Rule 10    oracion_futuro -> sujeto AUXILIAR_FUTURO VERBO OBJETO
+Rule 11    sujeto -> SUJETO_PRIMERA_PERSONA
+Rule 12    sujeto -> SUJETO_SEGUNDA_PERSONA
+Rule 13    sujeto_tercera_persona -> SUJETO_TERCERA_PERSONA
 
 Terminals, with rules where they appear
 
-OBJETO               : 4 5 6
-SUJETO               : 4 5 6
-VERBOFUTURO          : 6 9
-VERBOPASADO          : 5 8
-VERBOPRESENTE        : 4 7
+AUXILIAR_FUTURO      : 10
+INTERROGACION        : 
+OBJETO               : 7 8 9 10
+OBJETO_PRONOMBRE     : 
+SUJETO_PRIMERA_PERSONA : 11
+SUJETO_SEGUNDA_PERSONA : 12
+SUJETO_TERCERA_PERSONA : 8 13
+VERBO                : 10
+VERBO_PASADO         : 9
+VERBO_PRESENTE       : 7
+VERBO_PRESENTE_BE_1  : 
+VERBO_PRESENTE_BE_2  : 
+VERBO_PRESENTE_BE_3  : 
+VERBO_PRESENTE_TERCERA_PERSONA : 8
 error                : 
 
 Nonterminals, with rules where they appear
 
-frases               : 1 2
+frase                : 1 2
 oracion              : 2 3
+oracion_futuro       : 6
+oracion_pasado       : 5
+oracion_presente     : 4
 parrafo              : 0
-verbo                : 
+sujeto               : 7 9 10
+sujeto_tercera_persona : 
 
 Parsing method: LALR
 
 state 0
 
     (0) S' -> . parrafo
-    (1) parrafo -> . frases
-    (2) frases -> . frases oracion
-    (3) frases -> . oracion
-    (4) oracion -> . SUJETO VERBOPRESENTE OBJETO
-    (5) oracion -> . SUJETO VERBOPASADO OBJETO
-    (6) oracion -> . SUJETO VERBOFUTURO OBJETO
+    (1) parrafo -> . frase
+    (2) frase -> . frase oracion
+    (3) frase -> . oracion
+    (4) oracion -> . oracion_presente
+    (5) oracion -> . oracion_pasado
+    (6) oracion -> . oracion_futuro
+    (7) oracion_presente -> . sujeto VERBO_PRESENTE OBJETO
+    (8) oracion_presente -> . SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO
+    (9) oracion_pasado -> . sujeto VERBO_PASADO OBJETO
+    (10) oracion_futuro -> . sujeto AUXILIAR_FUTURO VERBO OBJETO
+    (11) sujeto -> . SUJETO_PRIMERA_PERSONA
+    (12) sujeto -> . SUJETO_SEGUNDA_PERSONA
 
-    SUJETO          shift and go to state 4
+    SUJETO_TERCERA_PERSONA shift and go to state 8
+    SUJETO_PRIMERA_PERSONA shift and go to state 9
+    SUJETO_SEGUNDA_PERSONA shift and go to state 10
 
     parrafo                        shift and go to state 1
-    frases                         shift and go to state 2
+    frase                          shift and go to state 2
     oracion                        shift and go to state 3
+    oracion_presente               shift and go to state 4
+    oracion_pasado                 shift and go to state 5
+    oracion_futuro                 shift and go to state 6
+    sujeto                         shift and go to state 7
 
 state 1
 
@@ -55,85 +92,186 @@ state 1
 
 state 2
 
-    (1) parrafo -> frases .
-    (2) frases -> frases . oracion
-    (4) oracion -> . SUJETO VERBOPRESENTE OBJETO
-    (5) oracion -> . SUJETO VERBOPASADO OBJETO
-    (6) oracion -> . SUJETO VERBOFUTURO OBJETO
+    (1) parrafo -> frase .
+    (2) frase -> frase . oracion
+    (4) oracion -> . oracion_presente
+    (5) oracion -> . oracion_pasado
+    (6) oracion -> . oracion_futuro
+    (7) oracion_presente -> . sujeto VERBO_PRESENTE OBJETO
+    (8) oracion_presente -> . SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO
+    (9) oracion_pasado -> . sujeto VERBO_PASADO OBJETO
+    (10) oracion_futuro -> . sujeto AUXILIAR_FUTURO VERBO OBJETO
+    (11) sujeto -> . SUJETO_PRIMERA_PERSONA
+    (12) sujeto -> . SUJETO_SEGUNDA_PERSONA
 
-    $end            reduce using rule 1 (parrafo -> frases .)
-    SUJETO          shift and go to state 4
+    $end            reduce using rule 1 (parrafo -> frase .)
+    SUJETO_TERCERA_PERSONA shift and go to state 8
+    SUJETO_PRIMERA_PERSONA shift and go to state 9
+    SUJETO_SEGUNDA_PERSONA shift and go to state 10
 
-    oracion                        shift and go to state 5
+    oracion                        shift and go to state 11
+    oracion_presente               shift and go to state 4
+    oracion_pasado                 shift and go to state 5
+    oracion_futuro                 shift and go to state 6
+    sujeto                         shift and go to state 7
 
 state 3
 
-    (3) frases -> oracion .
+    (3) frase -> oracion .
 
-    SUJETO          reduce using rule 3 (frases -> oracion .)
-    $end            reduce using rule 3 (frases -> oracion .)
+    SUJETO_TERCERA_PERSONA reduce using rule 3 (frase -> oracion .)
+    SUJETO_PRIMERA_PERSONA reduce using rule 3 (frase -> oracion .)
+    SUJETO_SEGUNDA_PERSONA reduce using rule 3 (frase -> oracion .)
+    $end            reduce using rule 3 (frase -> oracion .)
 
 
 state 4
 
-    (4) oracion -> SUJETO . VERBOPRESENTE OBJETO
-    (5) oracion -> SUJETO . VERBOPASADO OBJETO
-    (6) oracion -> SUJETO . VERBOFUTURO OBJETO
+    (4) oracion -> oracion_presente .
 
-    VERBOPRESENTE   shift and go to state 6
-    VERBOPASADO     shift and go to state 7
-    VERBOFUTURO     shift and go to state 8
+    SUJETO_TERCERA_PERSONA reduce using rule 4 (oracion -> oracion_presente .)
+    SUJETO_PRIMERA_PERSONA reduce using rule 4 (oracion -> oracion_presente .)
+    SUJETO_SEGUNDA_PERSONA reduce using rule 4 (oracion -> oracion_presente .)
+    $end            reduce using rule 4 (oracion -> oracion_presente .)
 
 
 state 5
 
-    (2) frases -> frases oracion .
+    (5) oracion -> oracion_pasado .
 
-    SUJETO          reduce using rule 2 (frases -> frases oracion .)
-    $end            reduce using rule 2 (frases -> frases oracion .)
+    SUJETO_TERCERA_PERSONA reduce using rule 5 (oracion -> oracion_pasado .)
+    SUJETO_PRIMERA_PERSONA reduce using rule 5 (oracion -> oracion_pasado .)
+    SUJETO_SEGUNDA_PERSONA reduce using rule 5 (oracion -> oracion_pasado .)
+    $end            reduce using rule 5 (oracion -> oracion_pasado .)
 
 
 state 6
 
-    (4) oracion -> SUJETO VERBOPRESENTE . OBJETO
+    (6) oracion -> oracion_futuro .
 
-    OBJETO          shift and go to state 9
+    SUJETO_TERCERA_PERSONA reduce using rule 6 (oracion -> oracion_futuro .)
+    SUJETO_PRIMERA_PERSONA reduce using rule 6 (oracion -> oracion_futuro .)
+    SUJETO_SEGUNDA_PERSONA reduce using rule 6 (oracion -> oracion_futuro .)
+    $end            reduce using rule 6 (oracion -> oracion_futuro .)
 
 
 state 7
 
-    (5) oracion -> SUJETO VERBOPASADO . OBJETO
+    (7) oracion_presente -> sujeto . VERBO_PRESENTE OBJETO
+    (9) oracion_pasado -> sujeto . VERBO_PASADO OBJETO
+    (10) oracion_futuro -> sujeto . AUXILIAR_FUTURO VERBO OBJETO
 
-    OBJETO          shift and go to state 10
+    VERBO_PRESENTE  shift and go to state 12
+    VERBO_PASADO    shift and go to state 13
+    AUXILIAR_FUTURO shift and go to state 14
 
 
 state 8
 
-    (6) oracion -> SUJETO VERBOFUTURO . OBJETO
+    (8) oracion_presente -> SUJETO_TERCERA_PERSONA . VERBO_PRESENTE_TERCERA_PERSONA OBJETO
 
-    OBJETO          shift and go to state 11
+    VERBO_PRESENTE_TERCERA_PERSONA shift and go to state 15
 
 
 state 9
 
-    (4) oracion -> SUJETO VERBOPRESENTE OBJETO .
+    (11) sujeto -> SUJETO_PRIMERA_PERSONA .
 
-    SUJETO          reduce using rule 4 (oracion -> SUJETO VERBOPRESENTE OBJETO .)
-    $end            reduce using rule 4 (oracion -> SUJETO VERBOPRESENTE OBJETO .)
+    VERBO_PRESENTE  reduce using rule 11 (sujeto -> SUJETO_PRIMERA_PERSONA .)
+    VERBO_PASADO    reduce using rule 11 (sujeto -> SUJETO_PRIMERA_PERSONA .)
+    AUXILIAR_FUTURO reduce using rule 11 (sujeto -> SUJETO_PRIMERA_PERSONA .)
 
 
 state 10
 
-    (5) oracion -> SUJETO VERBOPASADO OBJETO .
+    (12) sujeto -> SUJETO_SEGUNDA_PERSONA .
 
-    SUJETO          reduce using rule 5 (oracion -> SUJETO VERBOPASADO OBJETO .)
-    $end            reduce using rule 5 (oracion -> SUJETO VERBOPASADO OBJETO .)
+    VERBO_PRESENTE  reduce using rule 12 (sujeto -> SUJETO_SEGUNDA_PERSONA .)
+    VERBO_PASADO    reduce using rule 12 (sujeto -> SUJETO_SEGUNDA_PERSONA .)
+    AUXILIAR_FUTURO reduce using rule 12 (sujeto -> SUJETO_SEGUNDA_PERSONA .)
 
 
 state 11
 
-    (6) oracion -> SUJETO VERBOFUTURO OBJETO .
+    (2) frase -> frase oracion .
 
-    SUJETO          reduce using rule 6 (oracion -> SUJETO VERBOFUTURO OBJETO .)
-    $end            reduce using rule 6 (oracion -> SUJETO VERBOFUTURO OBJETO .)
+    SUJETO_TERCERA_PERSONA reduce using rule 2 (frase -> frase oracion .)
+    SUJETO_PRIMERA_PERSONA reduce using rule 2 (frase -> frase oracion .)
+    SUJETO_SEGUNDA_PERSONA reduce using rule 2 (frase -> frase oracion .)
+    $end            reduce using rule 2 (frase -> frase oracion .)
+
+
+state 12
+
+    (7) oracion_presente -> sujeto VERBO_PRESENTE . OBJETO
+
+    OBJETO          shift and go to state 16
+
+
+state 13
+
+    (9) oracion_pasado -> sujeto VERBO_PASADO . OBJETO
+
+    OBJETO          shift and go to state 17
+
+
+state 14
+
+    (10) oracion_futuro -> sujeto AUXILIAR_FUTURO . VERBO OBJETO
+
+    VERBO           shift and go to state 18
+
+
+state 15
+
+    (8) oracion_presente -> SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA . OBJETO
+
+    OBJETO          shift and go to state 19
+
+
+state 16
+
+    (7) oracion_presente -> sujeto VERBO_PRESENTE OBJETO .
+
+    SUJETO_TERCERA_PERSONA reduce using rule 7 (oracion_presente -> sujeto VERBO_PRESENTE OBJETO .)
+    SUJETO_PRIMERA_PERSONA reduce using rule 7 (oracion_presente -> sujeto VERBO_PRESENTE OBJETO .)
+    SUJETO_SEGUNDA_PERSONA reduce using rule 7 (oracion_presente -> sujeto VERBO_PRESENTE OBJETO .)
+    $end            reduce using rule 7 (oracion_presente -> sujeto VERBO_PRESENTE OBJETO .)
+
+
+state 17
+
+    (9) oracion_pasado -> sujeto VERBO_PASADO OBJETO .
+
+    SUJETO_TERCERA_PERSONA reduce using rule 9 (oracion_pasado -> sujeto VERBO_PASADO OBJETO .)
+    SUJETO_PRIMERA_PERSONA reduce using rule 9 (oracion_pasado -> sujeto VERBO_PASADO OBJETO .)
+    SUJETO_SEGUNDA_PERSONA reduce using rule 9 (oracion_pasado -> sujeto VERBO_PASADO OBJETO .)
+    $end            reduce using rule 9 (oracion_pasado -> sujeto VERBO_PASADO OBJETO .)
+
+
+state 18
+
+    (10) oracion_futuro -> sujeto AUXILIAR_FUTURO VERBO . OBJETO
+
+    OBJETO          shift and go to state 20
+
+
+state 19
+
+    (8) oracion_presente -> SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO .
+
+    SUJETO_TERCERA_PERSONA reduce using rule 8 (oracion_presente -> SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO .)
+    SUJETO_PRIMERA_PERSONA reduce using rule 8 (oracion_presente -> SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO .)
+    SUJETO_SEGUNDA_PERSONA reduce using rule 8 (oracion_presente -> SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO .)
+    $end            reduce using rule 8 (oracion_presente -> SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO .)
+
+
+state 20
+
+    (10) oracion_futuro -> sujeto AUXILIAR_FUTURO VERBO OBJETO .
+
+    SUJETO_TERCERA_PERSONA reduce using rule 10 (oracion_futuro -> sujeto AUXILIAR_FUTURO VERBO OBJETO .)
+    SUJETO_PRIMERA_PERSONA reduce using rule 10 (oracion_futuro -> sujeto AUXILIAR_FUTURO VERBO OBJETO .)
+    SUJETO_SEGUNDA_PERSONA reduce using rule 10 (oracion_futuro -> sujeto AUXILIAR_FUTURO VERBO OBJETO .)
+    $end            reduce using rule 10 (oracion_futuro -> sujeto AUXILIAR_FUTURO VERBO OBJETO .)
 

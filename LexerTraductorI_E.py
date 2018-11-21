@@ -32,128 +32,6 @@ tokens = (
 )
 
 t_INTERROGACION = r'\?'
-"""
-    'YO',
-    'TU',
-    'EL',
-    'ELLA',
-    'ESO',
-    'ESA',
-    'NOSOTROS',
-    'USTEDES',
-    'ELLOS',
-    'ELLAS',
-    
-    # Verbos
-    'BAILAR',
-    'CANTAR',
-    'JUGAR',
-    'REIR',
-    'LLORAR',
-
-    # Verbos Conjugados presente
-    'BAILO'
-    'CANTO',
-    'JUEGO',
-    'RIO',
-    'LLORO',
-    
-    'BAILAS',
-    'CANTAS',
-    'JUEGAS',
-    'LLORAS',
-    'RIES',
-    
-    'BAILA',
-    'CANTA',
-    'JUEGA',
-    'RIE',
-    'LLORA',
-    
-    'BAILAMOS',
-    'CANTAMOS',
-    'JUGAMOS',
-    'REIMOS',
-    'LLORAMOS',
-
-    'BAILAN',
-    'CANTAN',
-    'JUEGAN',
-    'RIEN',
-    'LLORAN',
-
-    # Verbos conjugados pasado
-    'BAILÉ',
-    'CANTÉ',
-    'JUGUÉ',
-    'REÍ',
-    'LLORÉ',
-
-    'BAILASTE',
-    'CANTASTE',
-    'JUGASTE',
-    'REISTE',
-    'LLORASTE',
-
-    'BAILÓ',
-    'CANTÓ',
-    'JUGÓ',
-    'RIÓ',
-    'LLORÓ',
-    
-    # LA CONJUGACION DE ESTOS VERBOS EN PASADO ES IGUAL A LA FORMA PRESENTE
-    # 'BAILAMOS',
-    # 'CANTAMOS',
-    # 'JUGAMOS',
-    # 'REIMOS',
-    # 'LLORAMOS',
-
-    'BAILARON',
-    'CANTARON',
-    'JUGARON',
-    'RIERON',
-    'LLORARON',
-
-    #Verbos Conjugados Futuro
-
-
-    'BAILARÉ'
-    'CANTARÉ',
-    'JUGARÉ',
-    'REIRÉ',
-    'LLORARÉ',
-    
-    'BAILARÁS',
-    'CANTARÁS',
-    'JUGARÁS',
-    'REIRÁS',
-    'LLORARÁS',
-
-    'BAILARÁ',
-    'CANTARÁ',
-    'JUGARÁ',
-    'REIRÁ',
-    'LLORARÁ',
-
-    'BAILAREMOS',
-    'CANTAREMOS',
-    'JUGAREMOS',
-    'REIREMOS',
-    'LLORAREMOS',
-
-    'BAILARÁN',
-    'CANTARÁN',
-    'JUGARÁN',
-    'REIRÁN',
-    'LLORARÁN',
-
-    # LA CONJUGACION DE ESTOS VERVOS PARA EL PRONOMBRE USTEDES Y ELLOS ES IGUAL
-    # 'BAILARÁN',
-    # 'CANTARÁN',
-    # 'JUGARÁN',
-    # 'REIRÁN',
-    # 'LLORARÁN',
-"""
 
 
 def t_SUJETO_PRIMERA_PERSONA(t):
@@ -201,13 +79,13 @@ def t_VERBO_PRESENTE_BE_3(t):
     return t
 
 
-def t_VERBO_PRESENTE(t):
-    r'dance|sing|run|cry|wake'
+def t_VERBO_PRESENTE_TERCERA_PERSONA(t):
+    r'dances|sings|runs|cries|wakes'
     return t
 
 
-def t_VERBO_PRESENTE_TERCERA_PERSONA(t):
-    r'dances|sings|runs|cries|wakes'
+def t_VERBO_PRESENTE(t):
+    r'dance|sing|run|cry|wake'
     return t
 
 
@@ -220,12 +98,13 @@ def t_OBJETO(t):
     r'salsa|opera|soccer|alone|good'
     return t
 
+
 def t_PRONOMBRE_OBJETO(t):
     r'me|you|him|her|it|them'
     return t
 
 
-#def t_INTERROGACION():
+# def t_INTERROGACION():
 
 
 def t_newline(t):
@@ -259,7 +138,7 @@ if __name__ == '__main__':
     data = '''
         I sang good?
         She is good
-        He sang good
+        He sings good
     '''
 
     # Build lexer and try on

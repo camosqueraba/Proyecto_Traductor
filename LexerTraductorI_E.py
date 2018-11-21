@@ -122,13 +122,18 @@ def t_error(t):
 
 def test(data, lexer):
     lexer.input(data)
+    palabras = []
+
     while True:
         tok = lexer.token()
         if not tok:
             break
-        print(tok, '1')
-
-
+        #print(tok, '1')
+        palabras.append([tok.type, tok.value])
+        print(tok.value, tok.type)
+        #print(tok.type)
+    return palabras
+    
 lexer = lex.lex()
 
 # Test
@@ -139,8 +144,9 @@ if __name__ == '__main__':
         I sang good?
         She is good
         He sings good
+        I run good
     '''
 
     # Build lexer and try on
     lexer.input(data)
-    test(data, lexer)
+    test(data,lexer)

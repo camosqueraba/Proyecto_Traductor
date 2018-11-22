@@ -21,14 +21,20 @@ def p_frase(p):
 
 
 def p_frase_(p):
-    'frase : oracion'
+    '''frase :  palabra
+             | oracion'''
     pass
 
 
 def p_oracion(p):
     '''oracion :    oracion_presente
                 |   oracion_pasado
-                |   oracion_futuro'''
+                |   oracion_futuro
+                |   oracion_pregunta'''
+    pass
+
+def p_oracion_1(p):
+    'oracion : sujeto VERBO_PASADO'
     pass
 
 
@@ -37,17 +43,38 @@ def p_oracion_presente(p):
                           | SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO'''
     pass
 
+def p_oracion_presente_1(p):
+    '''oracion_presente :   sujeto VERBO_PRESENTE 
+                          | SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA'''
+    pass
+
+
 
 def p_oracion_pasado(p):
     'oracion_pasado : sujeto VERBO_PASADO OBJETO'
     pass
+
+def p_oracion_pasado_1(p):
+    'oracion_pasado : SUJETO_TERCERA_PERSONA VERBO_PASADO'
+
 
 
 def p_oracion_futuro(p):
     'oracion_futuro : sujeto AUXILIAR_FUTURO VERBO OBJETO'
     pass
 
-# def p_verbo(p):
+def p_oracion_pregunta(p):
+    '''oracion_pregunta :   AUXILIAR_PREGUNTA AUXILIAR_DO sujeto VERBO_PRESENTE INTERROGACION
+                         | AUXILIAR_PREGUNTA DO_TERCERA_PERSONA SUJETO_TERCERA_PERSONA VERBO_PRESENTE INTERROGACION
+                         | AUXILIAR_DO sujeto VERBO_PRESENTE INTERROGACION '''
+
+def p_palabra(p):
+    '''palabra :  SUJETO
+                | VERBO_PRESENTE
+                | OBJETO '''
+    pass
+
+#def p_verbo(p):
 #    '''verbo :    VERBO_PRESENTE
 #                | VERBO_PASADO
 #                | VERBO   '''

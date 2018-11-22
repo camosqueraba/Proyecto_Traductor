@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AUXILIAR_FUTURO INTERROGACION OBJETO OBJETO_PRONOMBRE SUJETO_PRIMERA_PERSONA SUJETO_SEGUNDA_PERSONA SUJETO_TERCERA_PERSONA VERBO VERBO_PASADO VERBO_PRESENTE VERBO_PRESENTE_BE_1 VERBO_PRESENTE_BE_2 VERBO_PRESENTE_BE_3 VERBO_PRESENTE_TERCERA_PERSONAparrafo : frasefrase : frase oracionfrase : oracionoracion :    oracion_presente\n                |   oracion_pasado\n                |   oracion_futurooracion_presente :   sujeto VERBO_PRESENTE OBJETO\n                          | SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETOoracion_pasado : sujeto VERBO_PASADO OBJETOoracion_futuro : sujeto AUXILIAR_FUTURO VERBO OBJETOsujeto :     SUJETO_PRIMERA_PERSONA\n                 |  SUJETO_SEGUNDA_PERSONAsujeto_tercera_persona : SUJETO_TERCERA_PERSONA'
+_lr_signature = 'AUXILIAR_DO AUXILIAR_FUTURO AUXILIAR_PREGUNTA DO_TERCERA_PERSONA INTERROGACION OBJETO OBJETO_PRONOMBRE SUJETO SUJETO_PRIMERA_PERSONA SUJETO_SEGUNDA_PERSONA SUJETO_TERCERA_PERSONA VERBO VERBO_PASADO VERBO_PRESENTE VERBO_PRESENTE_BE_1 VERBO_PRESENTE_BE_2 VERBO_PRESENTE_BE_3 VERBO_PRESENTE_TERCERA_PERSONAparrafo : frasefrase : frase oracionfrase :  palabra\n             | oracionoracion :    oracion_presente\n                |   oracion_pasado\n                |   oracion_futuro\n                |   oracion_preguntaoracion : sujeto VERBO_PASADOoracion_presente :   sujeto VERBO_PRESENTE OBJETO\n                          | SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETOoracion_presente :   sujeto VERBO_PRESENTE \n                          | SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONAoracion_pasado : sujeto VERBO_PASADO OBJETOoracion_pasado : SUJETO_TERCERA_PERSONA VERBO_PASADOoracion_futuro : sujeto AUXILIAR_FUTURO VERBO OBJETOoracion_pregunta :   AUXILIAR_PREGUNTA AUXILIAR_DO sujeto VERBO_PRESENTE INTERROGACION\n                         | AUXILIAR_PREGUNTA DO_TERCERA_PERSONA SUJETO_TERCERA_PERSONA VERBO_PRESENTE INTERROGACION\n                         | AUXILIAR_DO sujeto VERBO_PRESENTE INTERROGACION palabra :  SUJETO\n                | VERBO_PRESENTE\n                | OBJETO sujeto :     SUJETO_PRIMERA_PERSONA\n                 |  SUJETO_SEGUNDA_PERSONAsujeto_tercera_persona : SUJETO_TERCERA_PERSONA'
     
-_lr_action_items = {'SUJETO_TERCERA_PERSONA':([0,2,3,4,5,6,11,16,17,19,20,],[8,8,-3,-4,-5,-6,-2,-7,-9,-8,-10,]),'SUJETO_PRIMERA_PERSONA':([0,2,3,4,5,6,11,16,17,19,20,],[9,9,-3,-4,-5,-6,-2,-7,-9,-8,-10,]),'SUJETO_SEGUNDA_PERSONA':([0,2,3,4,5,6,11,16,17,19,20,],[10,10,-3,-4,-5,-6,-2,-7,-9,-8,-10,]),'$end':([1,2,3,4,5,6,11,16,17,19,20,],[0,-1,-3,-4,-5,-6,-2,-7,-9,-8,-10,]),'VERBO_PRESENTE':([7,9,10,],[12,-11,-12,]),'VERBO_PASADO':([7,9,10,],[13,-11,-12,]),'AUXILIAR_FUTURO':([7,9,10,],[14,-11,-12,]),'VERBO_PRESENTE_TERCERA_PERSONA':([8,],[15,]),'OBJETO':([12,13,15,18,],[16,17,19,20,]),'VERBO':([14,],[18,]),}
+_lr_action_items = {'SUJETO':([0,],[5,]),'VERBO_PRESENTE':([0,12,16,17,26,31,32,],[6,20,-23,-24,33,35,36,]),'OBJETO':([0,19,20,22,29,],[7,27,28,30,34,]),'SUJETO_TERCERA_PERSONA':([0,2,3,4,5,6,7,8,9,10,11,18,19,20,22,23,25,27,28,30,34,37,38,39,],[13,13,-4,-3,-20,-21,-22,-5,-6,-7,-8,-2,-9,-12,-13,-15,32,-14,-10,-11,-16,-19,-17,-18,]),'AUXILIAR_PREGUNTA':([0,2,3,4,5,6,7,8,9,10,11,18,19,20,22,23,27,28,30,34,37,38,39,],[14,14,-4,-3,-20,-21,-22,-5,-6,-7,-8,-2,-9,-12,-13,-15,-14,-10,-11,-16,-19,-17,-18,]),'AUXILIAR_DO':([0,2,3,4,5,6,7,8,9,10,11,14,18,19,20,22,23,27,28,30,34,37,38,39,],[15,15,-4,-3,-20,-21,-22,-5,-6,-7,-8,24,-2,-9,-12,-13,-15,-14,-10,-11,-16,-19,-17,-18,]),'SUJETO_PRIMERA_PERSONA':([0,2,3,4,5,6,7,8,9,10,11,15,18,19,20,22,23,24,27,28,30,34,37,38,39,],[16,16,-4,-3,-20,-21,-22,-5,-6,-7,-8,16,-2,-9,-12,-13,-15,16,-14,-10,-11,-16,-19,-17,-18,]),'SUJETO_SEGUNDA_PERSONA':([0,2,3,4,5,6,7,8,9,10,11,15,18,19,20,22,23,24,27,28,30,34,37,38,39,],[17,17,-4,-3,-20,-21,-22,-5,-6,-7,-8,17,-2,-9,-12,-13,-15,17,-14,-10,-11,-16,-19,-17,-18,]),'$end':([1,2,3,4,5,6,7,8,9,10,11,18,19,20,22,23,27,28,30,34,37,38,39,],[0,-1,-4,-3,-20,-21,-22,-5,-6,-7,-8,-2,-9,-12,-13,-15,-14,-10,-11,-16,-19,-17,-18,]),'VERBO_PASADO':([12,13,16,17,],[19,23,-23,-24,]),'AUXILIAR_FUTURO':([12,16,17,],[21,-23,-24,]),'VERBO_PRESENTE_TERCERA_PERSONA':([13,],[22,]),'DO_TERCERA_PERSONA':([14,],[25,]),'VERBO':([21,],[29,]),'INTERROGACION':([33,35,36,],[37,38,39,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'parrafo':([0,],[1,]),'frase':([0,],[2,]),'oracion':([0,2,],[3,11,]),'oracion_presente':([0,2,],[4,4,]),'oracion_pasado':([0,2,],[5,5,]),'oracion_futuro':([0,2,],[6,6,]),'sujeto':([0,2,],[7,7,]),}
+_lr_goto_items = {'parrafo':([0,],[1,]),'frase':([0,],[2,]),'oracion':([0,2,],[3,18,]),'palabra':([0,],[4,]),'oracion_presente':([0,2,],[8,8,]),'oracion_pasado':([0,2,],[9,9,]),'oracion_futuro':([0,2,],[10,10,]),'oracion_pregunta':([0,2,],[11,11,]),'sujeto':([0,2,15,24,],[12,12,26,31,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -29,15 +29,27 @@ _lr_productions = [
   ("S' -> parrafo","S'",1,None,None,None),
   ('parrafo -> frase','parrafo',1,'p_parrafo','ParserTraductorI_E.py',13),
   ('frase -> frase oracion','frase',2,'p_frase','ParserTraductorI_E.py',18),
-  ('frase -> oracion','frase',1,'p_frase_','ParserTraductorI_E.py',24),
-  ('oracion -> oracion_presente','oracion',1,'p_oracion','ParserTraductorI_E.py',29),
-  ('oracion -> oracion_pasado','oracion',1,'p_oracion','ParserTraductorI_E.py',30),
-  ('oracion -> oracion_futuro','oracion',1,'p_oracion','ParserTraductorI_E.py',31),
-  ('oracion_presente -> sujeto VERBO_PRESENTE OBJETO','oracion_presente',3,'p_oracion_presente','ParserTraductorI_E.py',36),
-  ('oracion_presente -> SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO','oracion_presente',3,'p_oracion_presente','ParserTraductorI_E.py',37),
-  ('oracion_pasado -> sujeto VERBO_PASADO OBJETO','oracion_pasado',3,'p_oracion_pasado','ParserTraductorI_E.py',42),
-  ('oracion_futuro -> sujeto AUXILIAR_FUTURO VERBO OBJETO','oracion_futuro',4,'p_oracion_futuro','ParserTraductorI_E.py',47),
-  ('sujeto -> SUJETO_PRIMERA_PERSONA','sujeto',1,'p_sujeto','ParserTraductorI_E.py',57),
-  ('sujeto -> SUJETO_SEGUNDA_PERSONA','sujeto',1,'p_sujeto','ParserTraductorI_E.py',58),
-  ('sujeto_tercera_persona -> SUJETO_TERCERA_PERSONA','sujeto_tercera_persona',1,'p_sujeto_1','ParserTraductorI_E.py',63),
+  ('frase -> palabra','frase',1,'p_frase_','ParserTraductorI_E.py',24),
+  ('frase -> oracion','frase',1,'p_frase_','ParserTraductorI_E.py',25),
+  ('oracion -> oracion_presente','oracion',1,'p_oracion','ParserTraductorI_E.py',30),
+  ('oracion -> oracion_pasado','oracion',1,'p_oracion','ParserTraductorI_E.py',31),
+  ('oracion -> oracion_futuro','oracion',1,'p_oracion','ParserTraductorI_E.py',32),
+  ('oracion -> oracion_pregunta','oracion',1,'p_oracion','ParserTraductorI_E.py',33),
+  ('oracion -> sujeto VERBO_PASADO','oracion',2,'p_oracion_1','ParserTraductorI_E.py',37),
+  ('oracion_presente -> sujeto VERBO_PRESENTE OBJETO','oracion_presente',3,'p_oracion_presente','ParserTraductorI_E.py',42),
+  ('oracion_presente -> SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO','oracion_presente',3,'p_oracion_presente','ParserTraductorI_E.py',43),
+  ('oracion_presente -> sujeto VERBO_PRESENTE','oracion_presente',2,'p_oracion_presente_1','ParserTraductorI_E.py',47),
+  ('oracion_presente -> SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA','oracion_presente',2,'p_oracion_presente_1','ParserTraductorI_E.py',48),
+  ('oracion_pasado -> sujeto VERBO_PASADO OBJETO','oracion_pasado',3,'p_oracion_pasado','ParserTraductorI_E.py',54),
+  ('oracion_pasado -> SUJETO_TERCERA_PERSONA VERBO_PASADO','oracion_pasado',2,'p_oracion_pasado_1','ParserTraductorI_E.py',58),
+  ('oracion_futuro -> sujeto AUXILIAR_FUTURO VERBO OBJETO','oracion_futuro',4,'p_oracion_futuro','ParserTraductorI_E.py',63),
+  ('oracion_pregunta -> AUXILIAR_PREGUNTA AUXILIAR_DO sujeto VERBO_PRESENTE INTERROGACION','oracion_pregunta',5,'p_oracion_pregunta','ParserTraductorI_E.py',67),
+  ('oracion_pregunta -> AUXILIAR_PREGUNTA DO_TERCERA_PERSONA SUJETO_TERCERA_PERSONA VERBO_PRESENTE INTERROGACION','oracion_pregunta',5,'p_oracion_pregunta','ParserTraductorI_E.py',68),
+  ('oracion_pregunta -> AUXILIAR_DO sujeto VERBO_PRESENTE INTERROGACION','oracion_pregunta',4,'p_oracion_pregunta','ParserTraductorI_E.py',69),
+  ('palabra -> SUJETO','palabra',1,'p_palabra','ParserTraductorI_E.py',72),
+  ('palabra -> VERBO_PRESENTE','palabra',1,'p_palabra','ParserTraductorI_E.py',73),
+  ('palabra -> OBJETO','palabra',1,'p_palabra','ParserTraductorI_E.py',74),
+  ('sujeto -> SUJETO_PRIMERA_PERSONA','sujeto',1,'p_sujeto','ParserTraductorI_E.py',84),
+  ('sujeto -> SUJETO_SEGUNDA_PERSONA','sujeto',1,'p_sujeto','ParserTraductorI_E.py',85),
+  ('sujeto_tercera_persona -> SUJETO_TERCERA_PERSONA','sujeto_tercera_persona',1,'p_sujeto_1','ParserTraductorI_E.py',90),
 ]

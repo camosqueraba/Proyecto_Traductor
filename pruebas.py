@@ -5,7 +5,7 @@ from TraduccionIngles import *
 
 if __name__ == '__main__':
 
-    data = 'I sing good'
+    data = 'do they sing ?'
     #tests = ['examples/fibonacci.c']
 
     ParserTraductorI_E.VERBOSE = 0

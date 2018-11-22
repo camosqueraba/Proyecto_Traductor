@@ -14,19 +14,20 @@ tokens = (
     'SUJETO_PRIMERA_PERSONA',
     'SUJETO_SEGUNDA_PERSONA',
     'SUJETO_TERCERA_PERSONA',
-
+    'SUJETO',
     'VERBO',
+    'OBJETO',
     'VERBO_PRESENTE',
     'VERBO_PRESENTE_TERCERA_PERSONA',
     'VERBO_PASADO',
     'AUXILIAR_FUTURO',
-    'OBJETO',
+    'AUXILIAR_DO',
+    'DO_TERCERA_PERSONA',
+    'AUXILIAR_PREGUNTA',
     'OBJETO_PRONOMBRE',
-
     'VERBO_PRESENTE_BE_1',
     'VERBO_PRESENTE_BE_2',
     'VERBO_PRESENTE_BE_3',
-
     'INTERROGACION'
 
 )
@@ -34,19 +35,34 @@ tokens = (
 t_INTERROGACION = r'\?'
 
 
+def t_DO_TERCERA_PERSONA(t):
+    r'does'
+    return t
+
+
+def t_AUXILIAR_DO(t):
+    r'do'
+    return t
+
+
+
 def t_SUJETO_PRIMERA_PERSONA(t):
-    r'I|We'
+    r'I|we'
     return t
 
 
 def t_SUJETO_SEGUNDA_PERSONA(t):
-    r'You'
+    r'you|they'
     return t
 
 
 def t_SUJETO_TERCERA_PERSONA(t):
-    r'He|She|It'
+    r'he|she|it'
     return t
+
+def t_SUJETO(t):
+    r'I|You|She|He|It|We|They'
+
 
 
 def t_VERBO_PASADO(t):
@@ -88,6 +104,9 @@ def t_VERBO_PRESENTE(t):
     r'dance|sing|run|cry|wake'
     return t
 
+def t_VERBO(t):
+    r'dance|sing|run|cry|wake'
+    return t
 
 def t_AUXILIAR_FUTURO(t):
     r'will'
@@ -99,9 +118,15 @@ def t_OBJETO(t):
     return t
 
 
-def t_PRONOMBRE_OBJETO(t):
+def t_OBJETO_PRONOMBRE(t):
     r'me|you|him|her|it|them'
     return t
+
+def t_AUXILIAR_PREGUNTA(t):
+    r'why|how|when|where'
+    return t
+
+
 
 
 # def t_INTERROGACION():
@@ -128,7 +153,7 @@ def test(data, lexer):
         tok = lexer.token()
         if not tok:
             break
-        #print(tok, '1')
+        print(tok, '1')
         palabras.append(tok)
         #print(tok.value, tok.type)
         #print(tok.type)
@@ -142,7 +167,7 @@ if __name__ == '__main__':
 
     # Test
     data = '''
-        I sing good
+       how does she sing ?
     '''
 
     # Build lexer and try on

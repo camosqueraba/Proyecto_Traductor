@@ -1,6 +1,8 @@
 import ParserTraductorI_E
 import LexerTraductorI_E
 import sys
+from LexerTraductorI_E import *
+
 
 SUJETO_PRIMERA_PERSONA = {'I': 'Yo', 'We': 'nosotro(a)s'}
 SUJETO_SEGUNDA_PERSONA = {'You': 'tu'}
@@ -50,24 +52,6 @@ VERBO_PRESENTE_BE_3 = {}
 
 INTERROGACION = {}
 
-
-def traducirAEspaniol(data):
-
-    #tokens = test(data)
-    traduccion = ''
-    ParserTraductorI_E.VERBOSE = 0
-
-    try:
-        ParserTraductorI_E.parser.parse(data, tracking=True)
-        #print(data)
-        tokens = test(data)
-        print(tokens)
-        traduccion = traducirFrase(tokens)
-        print('[ok]')
-    except:
-        print('[Error de syntaxis]')
-    return traduccion
-
 def traducirFrase(frase):
     frase_traducida = ''
     for palabra in frase:
@@ -76,7 +60,42 @@ def traducirFrase(frase):
         frase_traducida = ' ' + traducir(tipo,valor)
     return frase_traducida
 
+ultimo_sujeto = ''
+
 def traducir(tipo,valor):
+	global ultimo_sujeto
+	palabra = ''
 	token_clase = tipo_token[tipo]
 	palabra = token_clase[valor]
-	return palabra
+	if((palabra == 'I') or (palabra == 'You') or (palabra == 'He') or (palabra == 'She') or (palabra == 'It') or (palabra == 'We') or (palabra == 'They')):
+		print(palabra)
+		ultimo_sujeto = palabra
+		return palabra
+	if ((palabra == VERBO_PRESENTE) or (palabra == VERBO_PRESENTE_TERCERA_PERSONA) or (palabra == VERBO_PASADO) ): 
+		conjugacion = palabra[ultimo_sujeto]
+		print (conjugacion)
+		return conjugacion
+	
+	#return palabra
+
+
+def traducirAEspaniol(data):
+
+    tokens = test(data, lexer)
+    #print (tokens)
+    traduccion = ''
+    ParserTraductorI_E.VERBOSE = 0
+
+    try:
+        ParserTraductorI_E.parser.parse(data, tracking=True)
+        #print(data)
+        #tokens = test(data)
+        #print(tokens)
+        #traduccion = traducirFrase(tokens)
+        print('[ok]')
+    except:
+        print('[Error de syntaxis]')
+    
+    traduccion = traducirFrase(tokens)    
+    return traduccion
+

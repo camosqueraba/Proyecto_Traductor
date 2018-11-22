@@ -132,7 +132,7 @@ def test(data, lexer):
         palabras.append(tok)
         #print(tok.value, tok.type)
         #print(tok.type)
-    print(palabras)
+    #print(palabras)
     return palabras
     
 lexer = lex.lex()

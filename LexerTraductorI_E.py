@@ -129,9 +129,10 @@ def test(data, lexer):
         if not tok:
             break
         #print(tok, '1')
-        palabras.append([tok.type, tok.value])
-        print(tok.value, tok.type)
+        palabras.append(tok)
+        #print(tok.value, tok.type)
         #print(tok.type)
+    print(palabras)
     return palabras
     
 lexer = lex.lex()
@@ -141,10 +142,7 @@ if __name__ == '__main__':
 
     # Test
     data = '''
-        I sang good?
-        She is good
-        He sings good
-        I run good
+        I sing good
     '''
 
     # Build lexer and try on

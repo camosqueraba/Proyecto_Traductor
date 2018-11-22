@@ -1,12 +1,16 @@
 from tkinter import *
 from TraduccionIngles import *
 import LexerTraductorI_E
-
+from TraduccionIngles import *
 
 def captura_texto_ingles():
-	texto = texto_ingles.get("1.0", "end-1c")
-	print (texto)
-	return texto
+	traduccion =''
+	texto = str(texto_ingles.get("1.0", "end-1c"))
+	print(texto)
+	traduccion = traducirAEspaniol(texto)
+	texto_español.insert(END,traduccion)
+	#print (texto)
+	#return texto
 
 def captura_texto_español():
 	texto = texto_español.get("1.0", "end-1c")

@@ -22,6 +22,7 @@ tokens = (
     'VERBO_PASADO',
     'AUXILIAR_FUTURO',
     'AUXILIAR_DO',
+    'AUXILIAR_DO_PASADO',
     'DO_TERCERA_PERSONA',
     'AUXILIAR_PREGUNTA',
     'AUXILIAR_NEGACION',
@@ -47,6 +48,9 @@ def t_AUXILIAR_DO(t):
     r'do'
     return t
 
+def t_AUXILIAR_DO_PASADO(t):
+    r'did'
+    return t
 
 def t_SUJETO_PRIMERA_PERSONA(t):
     r'I|we'
@@ -68,7 +72,7 @@ def t_SUJETO(t):
 
 
 def t_VERBO_PASADO(t):
-    r'sang|danced|ran|cried|woke|waked'
+    r'sang|danced|ran|cried|woke|waked|had'
     return t
 
 
@@ -103,7 +107,7 @@ def t_VERBO_PRESENTE_TERCERA_PERSONA(t):
 
 
 def t_VERBO_PRESENTE(t):
-    r'dance|sing|run|cry|wake'
+    r'dance|sing|run|cry|wake|have'
     return t
 
 
@@ -133,7 +137,7 @@ def t_OBJETO_PRONOMBRE(t):
 
 
 def t_CONECTOR(t):
-    r'with|and|a'
+    r'a|with|and'
     return t
 
 
@@ -141,11 +145,11 @@ def t_AUXILIAR_PREGUNTA(t):
     r'why|how|when|where'
     return t
 
-
+'''
 def t_ARTICULO(t):
     r'a|an|the'
     return t
-
+'''
 # def t_INTERROGACION():
 
 
@@ -185,7 +189,7 @@ if __name__ == '__main__':
 
     # Test
     data = '''
-       how does she sing ?
+       I did not have a car
     '''
 
     # Build lexer and try on

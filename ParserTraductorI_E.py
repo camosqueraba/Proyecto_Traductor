@@ -62,13 +62,15 @@ def p_oracion_presente_1(p):
 
 
 def p_oracion_pasado(p):
-    '''oracion_pasado :     sujeto VERBO_PASADO OBJETO
-                        |   SUJETO_TERCERA_PERSONA VERBO_PASADO OBJETO
+    '''oracion_pasado :     sujeto AUXILIAR_DO_PASADO AUXILIAR_NEGACION VERBO_PRESENTE CONECTOR OBJETO
+                        |   sujeto VERBO_PASADO CONECTOR OBJETO
+                        |   sujeto VERBO_PASADO OBJETO
+                        |   sujeto VERBO_PASADO
     '''
     pass
 
 def p_oracion_pasado_1(p):
-    '''oracion_pasado :     sujeto VERBO_PASADO
+    '''oracion_pasado :     SUJETO_TERCERA_PERSONA VERBO_PASADO OBJETO
                         |   SUJETO_TERCERA_PERSONA VERBO_PASADO
     '''
     pass
@@ -81,7 +83,8 @@ def p_oracion_futuro(p):
 def p_oracion_pregunta(p):
     '''oracion_pregunta :   AUXILIAR_PREGUNTA AUXILIAR_DO sujeto VERBO_PRESENTE INTERROGACION
                          | AUXILIAR_PREGUNTA DO_TERCERA_PERSONA SUJETO_TERCERA_PERSONA VERBO_PRESENTE INTERROGACION
-                         | AUXILIAR_DO sujeto VERBO_PRESENTE INTERROGACION '''
+                         | AUXILIAR_DO sujeto VERBO_PRESENTE INTERROGACION
+                         | DO_TERCERA_PERSONA SUJETO_TERCERA_PERSONA VERBO_PRESENTE INTERROGACION '''
 pass
 
 

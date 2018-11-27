@@ -14,10 +14,10 @@ SUJETO = [SUJETO_PRIMERA_PERSONA,
 VERBO = {'sing': 'cantar', 'cry': 'llorar'}
 
 
-VERBO_PRESENTE = {'sing': {'I': 'canto', 'you': 'cantas', 'we': 'cantamos', 'they': 'cantan'},
-                  'dance': {'I': 'bailo', 'you': 'bailas', 'we': 'bailamos', 'they': 'bailan'},
-                  'cry': {'I': 'lloro', 'you': 'lloras', 'we': 'lloramos', 'they': 'lloran'},
-                  'wake': {'I': 'despierto', 'you': 'despiertas', 'we': 'despertamos', 'they': 'despiertan'}
+VERBO_PRESENTE = {'sing': {'I': 'canto', 'you': 'cantas', 'she':'canta','he':'canta', 'it':'canta','we': 'cantamos', 'they': 'cantan'},
+                  'dance': {'I': 'bailo', 'you': 'bailas', 'she':'baila','he':'baila', 'it':'baila', 'we': 'bailamos', 'they': 'bailan'},
+                  'cry': {'I': 'lloro', 'you': 'lloras', 'she':'llora', 'he':'llora', 'it':'llora','we': 'lloramos', 'they': 'lloran'},
+                  'wake': {'I': 'despierto', 'you': 'despiertas', 'she':'despierta', 'he':'despierta', 'it':'despierta','we': 'despertamos', 'they': 'despiertan'}
 
                   }
 
@@ -30,6 +30,8 @@ AUXILIAR_PREGUNTA = {'why': 'por qué', 'how': 'cómo',
 
 INTERROGACION = {'?': '?'}
 
+AUXILIAR_NEGACION = {'not':'no'}
+
 VERBO_PRESENTE_TERCERA_PERSONA = {
     'sings': 'canta', 'dances': 'baila', 'cries': 'llora', 'wakes': 'despierta'}
 
@@ -39,7 +41,11 @@ VERBO_PASADO = {'sang': {'I': 'canté', 'you': 'cantaste', 'she': 'cantó', 'he'
                 'wake': {'I': 'desperté', 'you': 'despertaste', 'she': 'despertó', 'he': 'despertó', 'it': 'despertó', 'we': 'despertamos', 'they': 'despertaron'}
                 }
 
-OBJETO = {'good': 'bien'}
+OBJETO = {'good': 'bien', 'car':'carro'}
+
+OBJETO_PRONOMBRE = {'me':'mi','you':'ti','him':'él','her':'ella','it':'eso','us':'nosotros', 'them':'ello(a)s'}
+
+CONECTOR = {'while':'mientras', 'and':'y','with':'con', 'a':'un'}
 
 tipo_token = {'SUJETO_PRIMERA_PERSONA': SUJETO_PRIMERA_PERSONA,
               'SUJETO_SEGUNDA_PERSONA': SUJETO_SEGUNDA_PERSONA,
@@ -48,10 +54,13 @@ tipo_token = {'SUJETO_PRIMERA_PERSONA': SUJETO_PRIMERA_PERSONA,
               'VERBO_PRESENTE_TERCERA_PERSONA': VERBO_PRESENTE_TERCERA_PERSONA,
               'VERBO_PASADO': VERBO_PASADO,
               'OBJETO': OBJETO,
+              'OBJETO_PRONOMBRE':OBJETO_PRONOMBRE,
               'AUXILIAR_PREGUNTA': AUXILIAR_PREGUNTA,
               'AUXILIAR_DO': AUXILIAR_DO,
               'DO_TERCERA_PERSONA': DO_TERCERA_PERSONA,
-              'INTERROGACION': INTERROGACION
+              'INTERROGACION': INTERROGACION,
+              'CONECTOR':CONECTOR,
+              'AUXILIAR_NEGACION':AUXILIAR_NEGACION
               }
 
 

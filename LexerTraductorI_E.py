@@ -24,11 +24,14 @@ tokens = (
     'AUXILIAR_DO',
     'DO_TERCERA_PERSONA',
     'AUXILIAR_PREGUNTA',
+    'AUXILIAR_NEGACION',
     'OBJETO_PRONOMBRE',
     'VERBO_PRESENTE_BE_1',
     'VERBO_PRESENTE_BE_2',
     'VERBO_PRESENTE_BE_3',
-    'INTERROGACION'
+    'INTERROGACION',
+    'CONECTOR',
+    'ARTICULO'
 
 )
 
@@ -45,7 +48,6 @@ def t_AUXILIAR_DO(t):
     return t
 
 
-
 def t_SUJETO_PRIMERA_PERSONA(t):
     r'I|we'
     return t
@@ -57,12 +59,12 @@ def t_SUJETO_SEGUNDA_PERSONA(t):
 
 
 def t_SUJETO_TERCERA_PERSONA(t):
-    r'he|she|it'
+    r'^he$|she|it'
     return t
+
 
 def t_SUJETO(t):
     r'I|You|She|He|It|We|They'
-
 
 
 def t_VERBO_PASADO(t):
@@ -104,17 +106,24 @@ def t_VERBO_PRESENTE(t):
     r'dance|sing|run|cry|wake'
     return t
 
+
 def t_VERBO(t):
     r'dance|sing|run|cry|wake'
     return t
+
 
 def t_AUXILIAR_FUTURO(t):
     r'will'
     return t
 
 
+def t_AUXILIAR_NEGACION(t):
+    r'not'
+    return t
+
+
 def t_OBJETO(t):
-    r'salsa|opera|soccer|alone|good'
+    r'salsa|opera|soccer|alone|good|car'
     return t
 
 
@@ -122,12 +131,20 @@ def t_OBJETO_PRONOMBRE(t):
     r'me|you|him|her|it|them'
     return t
 
+
+def t_CONECTOR(t):
+    r'with|and|a'
+    return t
+
+
 def t_AUXILIAR_PREGUNTA(t):
     r'why|how|when|where'
     return t
 
 
-
+def t_ARTICULO(t):
+    r'a|an|the'
+    return t
 
 # def t_INTERROGACION():
 
@@ -156,10 +173,11 @@ def test(data, lexer):
         print(tok, '1')
         palabras.append(tok)
         #print(tok.value, tok.type)
-        #print(tok.type)
-    #print(palabras)
+        # print(tok.type)
+    # print(palabras)
     return palabras
-    
+
+
 lexer = lex.lex()
 
 # Test
@@ -172,4 +190,4 @@ if __name__ == '__main__':
 
     # Build lexer and try on
     lexer.input(data)
-    test(data,lexer)
+    test(data, lexer)

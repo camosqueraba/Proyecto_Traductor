@@ -27,36 +27,51 @@ def p_frase_(p):
 
 
 def p_oracion(p):
-    '''oracion :    oracion_presente
-                |   oracion_pasado
-                |   oracion_futuro
-                |   oracion_pregunta'''
+    '''oracion :   oracion_presente CONECTOR oracion
+                |  oracion_pasado CONECTOR oracion
+                |  oracion_futuro CONECTOR oracion
+                |  oracion_pregunta CONECTOR oracion'''
     pass
 
 def p_oracion_1(p):
-    'oracion : sujeto VERBO_PASADO'
+    '''oracion :   oracion_presente
+                |  oracion_pasado
+                |  oracion_futuro
+                |  oracion_pregunta'''
     pass
+
 
 
 def p_oracion_presente(p):
-    '''oracion_presente :   sujeto VERBO_PRESENTE OBJETO
-                          | SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO'''
+    '''oracion_presente :   sujeto AUXILIAR_DO AUXILIAR_NEGACION VERBO_PRESENTE CONECTOR OBJETO_PRONOMBRE  
+                          | sujeto AUXILIAR_DO AUXILIAR_NEGACION VERBO_PRESENTE OBJETO
+                          | sujeto VERBO_PRESENTE CONECTOR OBJETO_PRONOMBRE
+                          | sujeto VERBO_PRESENTE CONECTOR OBJETO
+                          | sujeto VERBO_PRESENTE OBJETO
+                          | sujeto VERBO_PRESENTE '''
     pass
 
 def p_oracion_presente_1(p):
-    '''oracion_presente :   sujeto VERBO_PRESENTE 
-                          | SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA'''
+    '''oracion_presente :   SUJETO_TERCERA_PERSONA DO_TERCERA_PERSONA AUXILIAR_NEGACION VERBO_PRESENTE CONECTOR OBJETO_PRONOMBRE  
+                          | SUJETO_TERCERA_PERSONA DO_TERCERA_PERSONA AUXILIAR_NEGACION VERBO_PRESENTE OBJETO
+                          | SUJETO_TERCERA_PERSONA VERBO_PRESENTE CONECTOR OBJETO_PRONOMBRE   
+                          | SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA
+                          | SUJETO_TERCERA_PERSONA VERBO_PRESENTE_TERCERA_PERSONA OBJETO'''
     pass
 
 
 
 def p_oracion_pasado(p):
-    'oracion_pasado : sujeto VERBO_PASADO OBJETO'
+    '''oracion_pasado :     sujeto VERBO_PASADO OBJETO
+                        |   SUJETO_TERCERA_PERSONA VERBO_PASADO OBJETO
+    '''
     pass
 
 def p_oracion_pasado_1(p):
-    'oracion_pasado : SUJETO_TERCERA_PERSONA VERBO_PASADO'
-
+    '''oracion_pasado :     sujeto VERBO_PASADO
+                        |   SUJETO_TERCERA_PERSONA VERBO_PASADO
+    '''
+    pass
 
 
 def p_oracion_futuro(p):
@@ -67,6 +82,9 @@ def p_oracion_pregunta(p):
     '''oracion_pregunta :   AUXILIAR_PREGUNTA AUXILIAR_DO sujeto VERBO_PRESENTE INTERROGACION
                          | AUXILIAR_PREGUNTA DO_TERCERA_PERSONA SUJETO_TERCERA_PERSONA VERBO_PRESENTE INTERROGACION
                          | AUXILIAR_DO sujeto VERBO_PRESENTE INTERROGACION '''
+pass
+
+
 
 def p_palabra(p):
     '''palabra :  SUJETO
@@ -90,6 +108,9 @@ def p_sujeto_1(p):
     'sujeto_tercera_persona : SUJETO_TERCERA_PERSONA'
     pass
 
+def p_objeto(p):
+    '''objeto :     SUJETO
+                |   '''
 
 """
     def p_empty(p):

@@ -70,14 +70,16 @@ def p_oracion_pasado(p):
     pass
 
 def p_oracion_pasado_1(p):
-    '''oracion_pasado :     SUJETO_TERCERA_PERSONA VERBO_PASADO OBJETO
+    '''oracion_pasado :     SUJETO_TERCERA_PERSONA AUXILIAR_DO_PASADO AUXILIAR_NEGACION VERBO_PRESENTE CONECTOR OBJETO
+                        |   SUJETO_TERCERA_PERSONA VERBO_PASADO CONECTOR OBJETO
+                        |   SUJETO_TERCERA_PERSONA VERBO_PASADO OBJETO
                         |   SUJETO_TERCERA_PERSONA VERBO_PASADO
     '''
     pass
 
 
 def p_oracion_futuro(p):
-    'oracion_futuro : sujeto AUXILIAR_FUTURO VERBO OBJETO'
+    'oracion_futuro : sujeto AUXILIAR_FUTURO VERBO_PRESENTE OBJETO'
     pass
 
 def p_oracion_pregunta(p):

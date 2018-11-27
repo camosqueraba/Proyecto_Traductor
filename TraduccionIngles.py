@@ -19,8 +19,9 @@ VERBO_PRESENTE = {'sing': {'I': 'canto', 'you': 'cantas', 'she':'canta','he':'ca
                   'dance': {'I': 'bailo', 'you': 'bailas', 'she':'baila','he':'baila', 'it':'baila', 'we': 'bailamos', 'they': 'bailan'},
                   'cry': {'I': 'lloro', 'you': 'lloras', 'she':'llora', 'he':'llora', 'it':'llora','we': 'lloramos', 'they': 'lloran'},
                   'wake': {'I': 'despierto', 'you': 'despiertas', 'she':'despierta', 'he':'despierta', 'it':'despierta','we': 'despertamos', 'they': 'despiertan'},
-                  'have': {'I': 'tengo', 'you': 'tienes', 'she':'tiene', 'he':'tiene', 'it':'tiene','we': 'tenemos', 'they': 'tienen'}
-
+                  'have': {'I': 'tengo', 'you': 'tienes', 'she':'tiene', 'he':'tiene', 'it':'tiene','we': 'tenemos', 'they': 'tienen'},
+                  'am' : {'I':'soy'},
+                  'are':{'you':'eres','we':'somos','they':'son'}
                   }
 
 AUXILIAR_DO = {'do': ''}
@@ -36,14 +37,23 @@ INTERROGACION = {'?': '?'}
 
 AUXILIAR_NEGACION = {'not':'no'}
 
+AUXILIAR_FUTURO = {'will':''}
+
 VERBO_PRESENTE_TERCERA_PERSONA = {
-    'sings': 'canta', 'dances': 'baila', 'cries': 'llora', 'wakes': 'despierta'}
+    'sings': 'canta', 'dances': 'baila', 'cries': 'llora', 'wakes': 'despierta', 'is':'es'}
 
 VERBO_PASADO = {'sang': {'I': 'canté', 'you': 'cantaste', 'she': 'cantó', 'he': 'cantó', 'it': 'cantó', 'we': 'cantamos', 'they': 'cantaron'},
                 'danced': {'I': 'bailé', 'you': 'bailaste', 'she': 'bailó', 'he': 'bailó', 'it': 'bailó', 'we': 'bailamos', 'they': 'bailaron'},
                 'cried': {'I': 'lloré', 'you': 'lloraste', 'she': 'lloró', 'he': 'lloró', 'it': 'lloró', 'we': 'lloramos', 'they': 'lloraron'},
                 'wake': {'I': 'desperté', 'you': 'despertaste', 'she': 'despertó', 'he': 'despertó', 'it': 'despertó', 'we': 'despertamos', 'they': 'despertaron'},
                 'had': {'I': 'tenia', 'you': 'tenias', 'she': 'tenia', 'he': 'tenia', 'it': 'tenia', 'we': 'teniamos', 'they': 'tenian'}
+                }
+
+VERBO_FUTURO = {'sing': {'I': 'cantaré', 'you': 'cantaras', 'she': 'cantara', 'he': 'cantara', 'it': 'cantara', 'we': 'cantaremos', 'they': 'cantarán'},
+                'dance': {'I': 'bailaré', 'you': 'bailaras', 'she': 'bailará', 'he': 'bailará', 'it': 'bailará', 'we': 'bailaremos', 'they': 'bailarán'},
+                'cry': {'I': 'lloré', 'you': 'lloraste', 'she': 'lloró', 'he': 'lloró', 'it': 'lloró', 'we': 'lloramos', 'they': 'lloraron'},
+                'wake': {'I': 'despertaré', 'you': 'despertarás', 'she': 'despertará', 'he': 'despertará', 'it': 'despertará', 'we': 'despertaremos', 'they': 'despertarán'},
+                'have': {'I': 'tenia', 'you': 'tenias', 'she': 'tenia', 'he': 'tenia', 'it': 'tenia', 'we': 'tendremos', 'they': 'tendran'}
                 }
 
 OBJETO = {'good': 'bien', 'car':'carro'}
@@ -58,6 +68,7 @@ tipo_token = {'SUJETO_PRIMERA_PERSONA': SUJETO_PRIMERA_PERSONA,
               'VERBO_PRESENTE': VERBO_PRESENTE,
               'VERBO_PRESENTE_TERCERA_PERSONA': VERBO_PRESENTE_TERCERA_PERSONA,
               'VERBO_PASADO': VERBO_PASADO,
+              'VERBO_FUTURO': VERBO_FUTURO,
               'OBJETO': OBJETO,
               'OBJETO_PRONOMBRE': OBJETO_PRONOMBRE,
               'AUXILIAR_PREGUNTA': AUXILIAR_PREGUNTA,
@@ -66,11 +77,12 @@ tipo_token = {'SUJETO_PRIMERA_PERSONA': SUJETO_PRIMERA_PERSONA,
               'DO_TERCERA_PERSONA': DO_TERCERA_PERSONA,
               'INTERROGACION': INTERROGACION,
               'CONECTOR': CONECTOR,
-              'AUXILIAR_NEGACION': AUXILIAR_NEGACION
+              'AUXILIAR_NEGACION': AUXILIAR_NEGACION,
+              'AUXILIAR_FUTURO':AUXILIAR_FUTURO
               }
 
 
-AUXILIAR_FUTURO = {}
+
 
 OBJETO_PRONOMBRE = {}
 
@@ -95,6 +107,7 @@ def traducirFrase(frase):
 ultimo_sujeto = ''
 auxiliar_pregunta = False
 auxiliar_pasado = False
+auxiliar_futuro = False
 
 def traducir(tipo, valor):
 
@@ -107,6 +120,8 @@ def traducir(tipo, valor):
   global VERBO_PRESENTE
   global VERBO_PASADO
   global EQUIVALENCIAS
+  global auxiliar_futuro
+  global VERBO_FUTURO
 
   print(tipo)
   print(valor)
@@ -126,6 +141,9 @@ def traducir(tipo, valor):
     auxiliar_pasado = True
     print('auxiliar pasado cambiado a TRUE')
 
+  if(token_clase == AUXILIAR_FUTURO):
+    auxiliar_futuro = True
+
   if(auxiliar_pasado == True and token_clase == VERBO_PRESENTE):
     
     token_clase = VERBO_PASADO  
@@ -134,6 +152,15 @@ def traducir(tipo, valor):
     print('condicional prueba auxiliar_pasado->', auxiliar_pasado, 'tipo->', tipo, 'valor->', valor, '')
     palabra = token_clase[valor]
     auxiliar_pasado = False
+
+  if(auxiliar_futuro == True and token_clase == VERBO_PRESENTE):
+    
+    token_clase = VERBO_FUTURO  
+    #equivalecia_presente_pasado = EQUIVALENCIAS[valor]
+    #valor = equivalecia_presente_pasado
+    print('condicional prueba auxiliar_pasado->', auxiliar_pasado, 'tipo->', tipo, 'valor->', valor, '')
+    palabra = token_clase[valor]
+    auxiliar_futuro = False
 
   print ('metodo traducir clase de token ', token_clase)
   print(isinstance(palabra,str))

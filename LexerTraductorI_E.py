@@ -75,7 +75,7 @@ def t_VERBO_PASADO(t):
     r'sang|danced|ran|cried|woke|waked|had'
     return t
 
-
+'''
 def t_VERBO_PASADO_BE_1(t):
     r'was'
     return t
@@ -99,15 +99,15 @@ def t_VERBO_PRESENTE_BE_2(t):
 def t_VERBO_PRESENTE_BE_3(t):
     r'is'
     return t
-
+'''
 
 def t_VERBO_PRESENTE_TERCERA_PERSONA(t):
-    r'dances|sings|runs|cries|wakes'
+    r'dances|sings|runs|cries|wakes|is'
     return t
 
 
 def t_VERBO_PRESENTE(t):
-    r'dance|sing|run|cry|wake|have'
+    r'dance|sing|run|cry|wake|have|am|are'
     return t
 
 
@@ -125,6 +125,9 @@ def t_AUXILIAR_NEGACION(t):
     r'not'
     return t
 
+def t_PRESENTE_CONTINUO(t):
+    r'going'
+    return t
 
 def t_OBJETO(t):
     r'salsa|opera|soccer|alone|good|car'

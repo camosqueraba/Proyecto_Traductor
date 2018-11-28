@@ -8,9 +8,6 @@ SUJETO_PRIMERA_PERSONA = {'I': 'Yo', 'we': 'nosotro(a)s'}
 SUJETO_SEGUNDA_PERSONA = {'you': 'tu', 'they': 'ellos'}
 SUJETO_TERCERA_PERSONA = {'she': 'ella', 'he': 'él', 'it': 'eso'}
 
-SUJETO = [SUJETO_PRIMERA_PERSONA,
-          SUJETO_SEGUNDA_PERSONA, SUJETO_TERCERA_PERSONA]
-
 VERBO = {'sing': 'cantar', 'cry': 'llorar'}
 
 EQUIVALENCIAS = {'have': 'had', 'sing': 'sang', 'dance': 'danced', 'cry':'cried', 'wake':'waked'}
@@ -24,6 +21,23 @@ VERBO_PRESENTE = {'sing': {'I': 'canto', 'you': 'cantas', 'she':'canta','he':'ca
                   'are':{'you':'eres','we':'somos','they':'son'}
                   }
 
+VERBO_PASADO = {'sang': {'I': 'canté', 'you': 'cantaste', 'she': 'cantó', 'he': 'cantó', 'it': 'cantó', 'we': 'cantamos', 'they': 'cantaron'},
+                'danced': {'I': 'bailé', 'you': 'bailaste', 'she': 'bailó', 'he': 'bailó', 'it': 'bailó', 'we': 'bailamos', 'they': 'bailaron'},
+                'cried': {'I': 'lloré', 'you': 'lloraste', 'she': 'lloró', 'he': 'lloró', 'it': 'lloró', 'we': 'lloramos', 'they': 'lloraron'},
+                'wake': {'I': 'desperté', 'you': 'despertaste', 'she': 'despertó', 'he': 'despertó', 'it': 'despertó', 'we': 'despertamos', 'they': 'despertaron'},
+                'had': {'I': 'tenia', 'you': 'tenias', 'she': 'tenia', 'he': 'tenia', 'it': 'tenia', 'we': 'teniamos', 'they': 'tenian'}
+                }
+
+
+VERBO_FUTURO = {'sing': {'I': 'cantaré', 'you': 'cantaras', 'she': 'cantara', 'he': 'cantara', 'it': 'cantara', 'we': 'cantaremos', 'they': 'cantarán'},
+                'dance': {'I': 'bailaré', 'you': 'bailaras', 'she': 'bailará','he': 'bailará', 'it': 'bailará', 'we': 'bailaremos', 'they': 'bailarán'},
+                'cry': {'I': 'lloré', 'you': 'lloraste', 'she': 'lloró', 'he': 'lloró', 'it': 'lloró', 'we': 'lloramos', 'they': 'lloraron'},
+                'wake': {'I': 'despertaré', 'you': 'despertarás', 'she': 'despertará', 'he': 'despertará', 'it': 'despertará', 'we': 'despertaremos', 'they': 'despertarán'},
+                'have': {'I': 'tenia', 'you': 'tenias', 'she': 'tenia', 'he': 'tenia', 'it': 'tenia', 'we': 'tendremos', 'they': 'tendran'}
+                }
+
+VERBO_PARTICIPIO_PASADO = {'played':'jugado'}
+
 AUXILIAR_DO = {'do': ''}
 
 AUXILIAR_DO_PASADO = {'did':''}
@@ -33,35 +47,24 @@ DO_TERCERA_PERSONA = {'does': ''}
 AUXILIAR_PREGUNTA = {'why': 'por qué', 'how': 'cómo',
     'when': 'cuando', 'where': 'donde'}
 
-INTERROGACION = {'?': '?'}
-
 AUXILIAR_NEGACION = {'not':'no'}
 
 AUXILIAR_FUTURO = {'will':''}
 
+AUXILIAR_HAVE = {'have': {'I': 'he', 'you': 'has','we': 'hemos', 'they': 'han'}}
+AUXILIAR_HAS = {'has':{'she': 'ha', 'he': 'ha', 'it': 'ha'}}
+
 VERBO_PRESENTE_TERCERA_PERSONA = {
     'sings': 'canta', 'dances': 'baila', 'cries': 'llora', 'wakes': 'despierta', 'is':'es'}
 
-VERBO_PASADO = {'sang': {'I': 'canté', 'you': 'cantaste', 'she': 'cantó', 'he': 'cantó', 'it': 'cantó', 'we': 'cantamos', 'they': 'cantaron'},
-                'danced': {'I': 'bailé', 'you': 'bailaste', 'she': 'bailó', 'he': 'bailó', 'it': 'bailó', 'we': 'bailamos', 'they': 'bailaron'},
-                'cried': {'I': 'lloré', 'you': 'lloraste', 'she': 'lloró', 'he': 'lloró', 'it': 'lloró', 'we': 'lloramos', 'they': 'lloraron'},
-                'wake': {'I': 'desperté', 'you': 'despertaste', 'she': 'despertó', 'he': 'despertó', 'it': 'despertó', 'we': 'despertamos', 'they': 'despertaron'},
-                'had': {'I': 'tenia', 'you': 'tenias', 'she': 'tenia', 'he': 'tenia', 'it': 'tenia', 'we': 'teniamos', 'they': 'tenian'}
-                }
 
-VERBO_FUTURO = {'sing': {'I': 'cantaré', 'you': 'cantaras', 'she': 'cantara', 'he': 'cantara', 'it': 'cantara', 'we': 'cantaremos', 'they': 'cantarán'},
-                'dance': {'I': 'bailaré', 'you': 'bailaras', 'she': 'bailará', 'he': 'bailará', 'it': 'bailará', 'we': 'bailaremos', 'they': 'bailarán'},
-                'cry': {'I': 'lloré', 'you': 'lloraste', 'she': 'lloró', 'he': 'lloró', 'it': 'lloró', 'we': 'lloramos', 'they': 'lloraron'},
-                'wake': {'I': 'despertaré', 'you': 'despertarás', 'she': 'despertará', 'he': 'despertará', 'it': 'despertará', 'we': 'despertaremos', 'they': 'despertarán'},
-                'have': {'I': 'tenia', 'you': 'tenias', 'she': 'tenia', 'he': 'tenia', 'it': 'tenia', 'we': 'tendremos', 'they': 'tendran'}
-                }
 
 OBJETO = {'good': 'bien', 'car':'carro'}
 
 OBJETO_PRONOMBRE = {'me':'mi','you':'ti','him':'él','her':'ella','it':'eso','us':'nosotros', 'them':'ello(a)s'}
 
 CONECTOR = {'while':'mientras', 'and':'y','with':'con', 'a':'un'}
-
+INTERROGACION = {'?': '?'}
 tipo_token = {'SUJETO_PRIMERA_PERSONA': SUJETO_PRIMERA_PERSONA,
               'SUJETO_SEGUNDA_PERSONA': SUJETO_SEGUNDA_PERSONA,
               'SUJETO_TERCERA_PERSONA': SUJETO_TERCERA_PERSONA,
@@ -69,6 +72,7 @@ tipo_token = {'SUJETO_PRIMERA_PERSONA': SUJETO_PRIMERA_PERSONA,
               'VERBO_PRESENTE_TERCERA_PERSONA': VERBO_PRESENTE_TERCERA_PERSONA,
               'VERBO_PASADO': VERBO_PASADO,
               'VERBO_FUTURO': VERBO_FUTURO,
+              'VERBO_PARTICIPIO_PASADO': VERBO_PARTICIPIO_PASADO,
               'OBJETO': OBJETO,
               'OBJETO_PRONOMBRE': OBJETO_PRONOMBRE,
               'AUXILIAR_PREGUNTA': AUXILIAR_PREGUNTA,
@@ -78,7 +82,9 @@ tipo_token = {'SUJETO_PRIMERA_PERSONA': SUJETO_PRIMERA_PERSONA,
               'INTERROGACION': INTERROGACION,
               'CONECTOR': CONECTOR,
               'AUXILIAR_NEGACION': AUXILIAR_NEGACION,
-              'AUXILIAR_FUTURO':AUXILIAR_FUTURO
+              'AUXILIAR_FUTURO':AUXILIAR_FUTURO,
+              'AUXILIAR_HAVE' : AUXILIAR_HAVE,
+              'AUXILIAR_HAS' : AUXILIAR_HAS
               }
 
 

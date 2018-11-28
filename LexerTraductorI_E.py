@@ -20,12 +20,17 @@ tokens = (
     'VERBO_PRESENTE',
     'VERBO_PRESENTE_TERCERA_PERSONA',
     'VERBO_PASADO',
+    'VERBO_PARTICIPIO_PASADO',
     'AUXILIAR_FUTURO',
     'AUXILIAR_DO',
     'AUXILIAR_DO_PASADO',
+    'AUXILIAR_HAVE',
+    'AUXILIAR_HAS',
     'DO_TERCERA_PERSONA',
     'AUXILIAR_PREGUNTA',
     'AUXILIAR_NEGACION',
+    
+    
     'OBJETO_PRONOMBRE',
     'VERBO_PRESENTE_BE_1',
     'VERBO_PRESENTE_BE_2',
@@ -63,7 +68,7 @@ def t_SUJETO_SEGUNDA_PERSONA(t):
 
 
 def t_SUJETO_TERCERA_PERSONA(t):
-    r'^he$|she|it'
+    r'he|she|it'
     return t
 
 
@@ -75,6 +80,9 @@ def t_VERBO_PASADO(t):
     r'sang|danced|ran|cried|woke|waked|had'
     return t
 
+def t_VERBO_PARTICIPIO_PASADO(t):
+    r'played'
+    return t
 '''
 def t_VERBO_PASADO_BE_1(t):
     r'was'
@@ -107,12 +115,22 @@ def t_VERBO_PRESENTE_TERCERA_PERSONA(t):
 
 
 def t_VERBO_PRESENTE(t):
-    r'dance|sing|run|cry|wake|have|am|are'
+    r'dance|sing|run|cry|wake|am|are'
     return t
 
 
 def t_VERBO(t):
     r'dance|sing|run|cry|wake'
+    return t
+
+
+def t_AUXILIAR_HAVE(t):
+    r'have'
+    return t
+
+
+def t_AUXILIAR_HAS(t):
+    r'has'
     return t
 
 

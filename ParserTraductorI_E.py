@@ -30,14 +30,16 @@ def p_oracion(p):
     '''oracion :   oracion_presente CONECTOR oracion
                 |  oracion_pasado CONECTOR oracion
                 |  oracion_futuro CONECTOR oracion
-                |  oracion_pregunta CONECTOR oracion'''
+                |  oracion_pregunta CONECTOR oracion
+                |  oracion_presente_perfecto oracion'''
     pass
 
 def p_oracion_1(p):
     '''oracion :   oracion_presente
                 |  oracion_pasado
                 |  oracion_futuro
-                |  oracion_pregunta'''
+                |  oracion_pregunta
+                |  oracion_presente_perfecto'''
     pass
 
 
@@ -87,9 +89,12 @@ def p_oracion_pregunta(p):
                          | AUXILIAR_PREGUNTA DO_TERCERA_PERSONA SUJETO_TERCERA_PERSONA VERBO_PRESENTE INTERROGACION
                          | AUXILIAR_DO sujeto VERBO_PRESENTE INTERROGACION
                          | DO_TERCERA_PERSONA SUJETO_TERCERA_PERSONA VERBO_PRESENTE INTERROGACION '''
-pass
+    pass
 
-
+def p_oracion_presente_perfecto(p):
+    '''oracion_presente_perfecto : sujeto AUXILIAR_HAVE VERBO_PARTICIPIO_PASADO
+                                |   SUJETO_TERCERA_PERSONA AUXILIAR_HAS VERBO_PARTICIPIO_PASADO'''
+    pass
 
 def p_palabra(p):
     '''palabra :  SUJETO
